@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>地方在地知識學 - 社區人物與夥伴</title>
+  <link rel="stylesheet" href="styles/common.css">
+</head>
+<body>
+
+  <nav>
+    <h1>地方在地知識學</h1>
+    <ul>
+      <li><a href="community-people.html">社區人物與夥伴</a></li>
+      <li><a href="experience-sharing.html">經驗分享與觀點</a></li>
+      <li><a href="walking-tour.html">走讀新竹</a></li>
+      <li><a href="#nature">地方創生</a></li>
+      <li><a href="#community">在地生態</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>社區人物與夥伴</h2>
+    <p>Community People & Partners</p>
+  </header>
+
+  <section class="section-container">
+    <div class="card" id="culture">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+      <a href="community-people.html">了解更多</a>
+    </div>
+    <div class="card" id="wisdom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+      <a href="experience-sharing.html">了解更多</a>
+    </div>
+    <div class="card" id="language">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+      <a href="walking-tour.html">了解更多</a>
+    </div>
+    <div class="card" id="nature">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="card" id="community">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="main-button-group">
+      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
+      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
+      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 地方在地知識學 計畫團隊
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    // 社區人物頁面的內容數據
+    const contentData = {
+      'btn-person': {
+        title: '人物專訪',
+        content: `
+          <div class="person-interview">
+            <h4>在地人物故事</h4>
+            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
+            <div class="interview-items">
+              <div class="interview-item">
+                <h5>冷水坑溪</h5>
+                <p>探索冷水坑溪流域的在地人物故事，了解他們與水資源的深厚連結。</p>
+              </div>
+              <div class="interview-item">
+                <h5>眷村採訪</h5>
+                <p>深入眷村文化，採訪在地居民，記錄珍貴的歷史記憶與生活故事。</p>
+              </div>
+              <div class="interview-item">
+                <h5>南港採訪</h5>
+                <p>走訪南港地區，採訪在地人物，了解南港的發展歷程與文化特色。</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'btn-partner': {
+        title: '社區夥伴',
+        content: `
+          <div class="community-partners">
+            <h4>合作夥伴網絡</h4>
+            <p>與我們一起推動地方發展的重要夥伴。</p>
+            <div class="partner-items">
+              <div class="partner-item">
+                <h5>社區名稱</h5>
+                <p>與在地社區建立緊密合作關係，共同推動地方發展與文化傳承。</p>
+              </div>
+              <div class="partner-item">
+                <h5>公益團體</h5>
+                <p>與各類公益團體合作，攜手推動社會公益與環境保護工作。</p>
+              </div>
+              <div class="partner-item">
+                <h5>非營利組織</h5>
+                <p>與非營利組織建立夥伴關係，共同致力於社會服務與文化推廣。</p>
+              </div>
+              <div class="partner-item">
+                <h5>個人</h5>
+                <p>與在地個人夥伴合作，匯集個人專長與熱情，共同推動地方發展。</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'btn-talent': {
+        title: '人才師資庫',
+        content: `
+          <div class="talent-pool">
+            <h4>專業師資陣容</h4>
+            <p>匯集各領域專業人才，提供優質的學習資源。</p>
+            <ul>
+              <li>學術研究專家</li>
+              <li>實務經驗導師</li>
+              <li>在地文化專家</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    // 初始化內容管理器
+    new ContentManager(contentData, 'btn-person');
+  </script>
+</body>
+</html>

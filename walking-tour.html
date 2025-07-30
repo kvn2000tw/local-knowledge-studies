@@ -156,6 +156,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      clear: both;
     }
     .content-area.active {
       display: block;
@@ -230,15 +231,15 @@
     <ul>
       <li><a href="#culture">社區人物與夥伴</a></li>
       <li><a href="experience-sharing.html">經驗分享與觀點</a></li>
-      <li><a href="#language">走讀新竹</a></li>
+      <li><a href="walking-tour.html">走讀新竹</a></li>
       <li><a href="#nature">地方創生</a></li>
       <li><a href="#community">在地生態</a></li>
     </ul>
   </nav>
 
   <header>
-    <h2>地方在地知識學</h2>
-    <p>Local Knowledge Studies</p>
+    <h2>走讀新竹</h2>
+    <p>Walking Tour of Hsinchu</p>
   </header>
 
   <section class="section-container">
@@ -255,7 +256,7 @@
     <div class="card" id="language">
       <h3>走讀新竹</h3>
       <p>山林系列、水資源系列。</p>
-      <a href="#">了解更多</a>
+      <a href="walking-tour.html">了解更多</a>
     </div>
     <div class="card" id="nature">
       <h3>地方創生</h3>
@@ -268,38 +269,11 @@
       <a href="#">了解更多</a>
     </div>
     <div class="main-button-group">
-      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
-      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
-      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
+      <a href="#" class="main-btn active" id="btn-mountain">山林系列</a>
+      <a href="#" class="main-btn" id="btn-water">水資源系列</a>
+      <a href="#" class="main-btn" id="btn-culture">文化系列</a>
     </div>
   </section>
-
-  <!-- 人物專訪區域 -->
-  <div class="content-area" id="person-content">
-    <h3>人物專訪</h3>
-    <p>這裡是人物專訪的內容區域，可以放置相關的專訪文章、人物介紹等內容。</p>
-    <div class="content-placeholder">
-      <p>人物專訪內容預留區域</p>
-    </div>
-  </div>
-
-  <!-- 社區夥伴區域 -->
-  <div class="content-area" id="partner-content">
-    <h3>社區夥伴</h3>
-    <p>這裡是社區夥伴的內容區域，可以放置合作夥伴、社區組織等相關資訊。</p>
-    <div class="content-placeholder">
-      <p>社區夥伴內容預留區域</p>
-    </div>
-  </div>
-
-  <!-- 人才師資庫區域 -->
-  <div class="content-area" id="talent-content">
-    <h3>人才師資庫</h3>
-    <p>這裡是人才師資庫的內容區域，可以放置師資介紹、專業人才等相關資訊。</p>
-    <div class="content-placeholder">
-      <p>人才師資庫內容預留區域</p>
-    </div>
-  </div>
 
   <footer>
     © 2025 地方在地知識學 計畫團隊
@@ -311,66 +285,67 @@
 
     // 定義不同按鈕的內容
     const contentData = {
-      'btn-person': {
-        title: '人物專訪',
+      'btn-mountain': {
+        title: '山林系列',
         content: `
-          <div class="person-interview">
-            <h4>在地人物故事</h4>
-            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
+          <div class="mountain-series">
+            <h4>新竹山林探索</h4>
+            <p>深入新竹的山林環境，探索自然生態與人文歷史的交會。</p>
             <div class="interview-items">
               <div class="interview-item">
-                <h5>冷水坑溪</h5>
-                <p>探索冷水坑溪流域的在地人物故事，了解他們與水資源的深厚連結。</p>
+                <h5>十八尖山</h5>
+                <p>探索十八尖山的自然生態與歷史文化，了解這座城市綠肺的重要性。</p>
               </div>
               <div class="interview-item">
-                <h5>眷村採訪</h5>
-                <p>深入眷村文化，採訪在地居民，記錄珍貴的歷史記憶與生活故事。</p>
+                <h5>青草湖</h5>
+                <p>走訪青草湖周邊環境，了解水庫建設與地方發展的關係。</p>
               </div>
               <div class="interview-item">
-                <h5>南港採訪</h5>
-                <p>走訪南港地區，採訪在地人物，了解南港的發展歷程與文化特色。</p>
+                <h5>香山濕地</h5>
+                <p>探索香山濕地的生態環境，了解濕地保育與生物多樣性的重要性。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-partner': {
-        title: '社區夥伴',
+      'btn-water': {
+        title: '水資源系列',
         content: `
-          <div class="community-partners">
-            <h4>合作夥伴網絡</h4>
-            <p>與我們一起推動地方發展的重要夥伴。</p>
+          <div class="water-series">
+            <h4>新竹水資源探索</h4>
+            <p>深入了解新竹的水資源分布、利用與保護現況。</p>
             <div class="partner-items">
               <div class="partner-item">
-                <h5>社區名稱</h5>
-                <p>與在地社區建立緊密合作關係，共同推動地方發展與文化傳承。</p>
+                <h5>頭前溪</h5>
+                <p>探索頭前溪流域的自然環境與人文歷史，了解河流與城市的關係。</p>
               </div>
               <div class="partner-item">
-                <h5>公益團體</h5>
-                <p>與各類公益團體合作，攜手推動社會公益與環境保護工作。</p>
+                <h5>客雅溪</h5>
+                <p>走訪客雅溪的生態環境，了解溪流整治與環境保護的成果。</p>
               </div>
               <div class="partner-item">
-                <h5>非營利組織</h5>
-                <p>與非營利組織建立夥伴關係，共同致力於社會服務與文化推廣。</p>
+                <h5>水庫系統</h5>
+                <p>了解新竹地區水庫系統的建設歷史與供水功能。</p>
               </div>
               <div class="partner-item">
-                <h5>個人</h5>
-                <p>與在地個人夥伴合作，匯集個人專長與熱情，共同推動地方發展。</p>
+                <h5>地下水資源</h5>
+                <p>探索新竹地區地下水資源的分布與利用現況。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-talent': {
-        title: '人才師資庫',
+      'btn-culture': {
+        title: '文化系列',
         content: `
-          <div class="talent-pool">
-            <h4>專業師資陣容</h4>
-            <p>匯集各領域專業人才，提供優質的學習資源。</p>
+          <div class="culture-series">
+            <h4>新竹文化探索</h4>
+            <p>深入了解新竹的歷史文化、傳統技藝與現代發展。</p>
             <ul>
-              <li>學術研究專家</li>
-              <li>實務經驗導師</li>
-              <li>在地文化專家</li>
+              <li>古城文化探索</li>
+              <li>客家文化傳承</li>
+              <li>科技產業發展</li>
+              <li>傳統工藝保存</li>
             </ul>
           </div>
         `
@@ -383,7 +358,9 @@
       contentDisplay = document.createElement('div');
       contentDisplay.id = 'content-display';
       contentDisplay.className = 'content-area';
-      document.querySelector('.main-button-group').insertAdjacentElement('afterend', contentDisplay);
+      // 插入到按鈕組下方，footer 上方
+      const footer = document.querySelector('footer');
+      footer.parentNode.insertBefore(contentDisplay, footer);
     }
 
     mainBtns.forEach(btn => {
@@ -406,14 +383,14 @@
       });
     });
 
-    // 頁面載入時預設顯示人物專訪內容
+    // 頁面載入時預設顯示山林系列內容
     contentDisplay.innerHTML = `
-      <h3>${contentData['btn-person'].title}</h3>
+      <h3>${contentData['btn-mountain'].title}</h3>
       <div class="content-placeholder">
-        ${contentData['btn-person'].content}
+        ${contentData['btn-mountain'].content}
       </div>
     `;
     contentDisplay.classList.add('active');
   </script>
 </body>
-</html>
+</html> 
