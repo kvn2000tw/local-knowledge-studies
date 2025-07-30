@@ -156,6 +156,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      clear: both;
     }
     .content-area.active {
       display: block;
@@ -268,37 +269,15 @@
       <a href="#">了解更多</a>
     </div>
     <div class="main-button-group">
-      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
-      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
-      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
+      <a href="#" class="main-btn active" id="btn-teacher">教師分享</a>
+      <a href="#" class="main-btn" id="btn-activity">活動分享</a>
+      <a href="#" class="main-btn" id="btn-student">學員分享</a>
     </div>
   </section>
 
-  <!-- 人物專訪區域 -->
-  <div class="content-area" id="person-content">
-    <h3>人物專訪</h3>
-    <p>這裡是人物專訪的內容區域，可以放置相關的專訪文章、人物介紹等內容。</p>
-    <div class="content-placeholder">
-      <p>人物專訪內容預留區域</p>
-    </div>
-  </div>
-
-  <!-- 社區夥伴區域 -->
-  <div class="content-area" id="partner-content">
-    <h3>社區夥伴</h3>
-    <p>這裡是社區夥伴的內容區域，可以放置合作夥伴、社區組織等相關資訊。</p>
-    <div class="content-placeholder">
-      <p>社區夥伴內容預留區域</p>
-    </div>
-  </div>
-
-  <!-- 人才師資庫區域 -->
-  <div class="content-area" id="talent-content">
-    <h3>人才師資庫</h3>
-    <p>這裡是人才師資庫的內容區域，可以放置師資介紹、專業人才等相關資訊。</p>
-    <div class="content-placeholder">
-      <p>人才師資庫內容預留區域</p>
-    </div>
+  <!-- 內容顯示區域 -->
+  <div class="content-area" id="content-display">
+    <!-- 內容將由 JavaScript 填充 -->
   </div>
 
   <footer>
@@ -311,66 +290,66 @@
 
     // 定義不同按鈕的內容
     const contentData = {
-      'btn-person': {
-        title: '人物專訪',
+      'btn-teacher': {
+        title: '教師分享',
         content: `
           <div class="person-interview">
-            <h4>在地人物故事</h4>
-            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
+            <h4>教師經驗分享</h4>
+            <p>分享教師們的教學經驗、心得與在地知識傳承的故事。</p>
             <div class="interview-items">
               <div class="interview-item">
                 <h5>冷水坑溪</h5>
-                <p>探索冷水坑溪流域的在地人物故事，了解他們與水資源的深厚連結。</p>
+                <p>教師分享冷水坑溪流域的教學經驗與在地知識傳承。</p>
               </div>
               <div class="interview-item">
                 <h5>眷村採訪</h5>
-                <p>深入眷村文化，採訪在地居民，記錄珍貴的歷史記憶與生活故事。</p>
+                <p>教師分享眷村文化的教學心得與歷史記憶傳承經驗。</p>
               </div>
               <div class="interview-item">
                 <h5>南港採訪</h5>
-                <p>走訪南港地區，採訪在地人物，了解南港的發展歷程與文化特色。</p>
+                <p>教師分享南港地區的教學經驗與在地文化特色介紹。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-partner': {
-        title: '社區夥伴',
+      'btn-activity': {
+        title: '活動分享',
         content: `
           <div class="community-partners">
-            <h4>合作夥伴網絡</h4>
-            <p>與我們一起推動地方發展的重要夥伴。</p>
+            <h4>活動經驗分享</h4>
+            <p>分享各種活動的舉辦經驗、成果與參與者的回饋。</p>
             <div class="partner-items">
               <div class="partner-item">
                 <h5>社區名稱</h5>
-                <p>與在地社區建立緊密合作關係，共同推動地方發展與文化傳承。</p>
+                <p>分享與在地社區合作的活動經驗與成果。</p>
               </div>
               <div class="partner-item">
                 <h5>公益團體</h5>
-                <p>與各類公益團體合作，攜手推動社會公益與環境保護工作。</p>
+                <p>分享與公益團體合作的活動經驗與社會影響。</p>
               </div>
               <div class="partner-item">
                 <h5>非營利組織</h5>
-                <p>與非營利組織建立夥伴關係，共同致力於社會服務與文化推廣。</p>
+                <p>分享與非營利組織合作的活動經驗與服務成果。</p>
               </div>
               <div class="partner-item">
                 <h5>個人</h5>
-                <p>與在地個人夥伴合作，匯集個人專長與熱情，共同推動地方發展。</p>
+                <p>分享與個人夥伴合作的活動經驗與個人成長故事。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-talent': {
-        title: '人才師資庫',
+      'btn-student': {
+        title: '學員分享',
         content: `
           <div class="talent-pool">
-            <h4>專業師資陣容</h4>
-            <p>匯集各領域專業人才，提供優質的學習資源。</p>
+            <h4>學員學習分享</h4>
+            <p>分享學員們的學習心得、收穫與個人成長故事。</p>
             <ul>
-              <li>學術研究專家</li>
-              <li>實務經驗導師</li>
-              <li>在地文化專家</li>
+              <li>學習心得分享</li>
+              <li>個人成長故事</li>
+              <li>課程收穫回饋</li>
             </ul>
           </div>
         `
@@ -383,7 +362,9 @@
       contentDisplay = document.createElement('div');
       contentDisplay.id = 'content-display';
       contentDisplay.className = 'content-area';
-      document.querySelector('.main-button-group').insertAdjacentElement('afterend', contentDisplay);
+      // 插入到按鈕組下方，footer 上方
+      const footer = document.querySelector('footer');
+      footer.parentNode.insertBefore(contentDisplay, footer);
     }
 
     mainBtns.forEach(btn => {
@@ -406,11 +387,11 @@
       });
     });
 
-    // 頁面載入時預設顯示人物專訪內容
+    // 頁面載入時預設顯示教師分享內容
     contentDisplay.innerHTML = `
-      <h3>${contentData['btn-person'].title}</h3>
+      <h3>${contentData['btn-teacher'].title}</h3>
       <div class="content-placeholder">
-        ${contentData['btn-person'].content}
+        ${contentData['btn-teacher'].content}
       </div>
     `;
     contentDisplay.classList.add('active');
