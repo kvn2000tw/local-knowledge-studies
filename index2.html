@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>地方在地知識學</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "微軟正黑體", sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+    }
+
+    /* 導覽列樣式 */
+    nav {
+      background-color: #3a7c5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background-color: #f2f2f2;
+    }
+    header h2 {
+      font-size: 48px;
+      margin: 0;
+      color: #3a7c5b;
+    }
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .section-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 150px;
+      margin: 15px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      color: #3a7c5b;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      background-color: #3a7c5b;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background-color: #3a7c5b;
+      }
+      .section-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  <style>
+    .main-button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .main-btn {
+      background-color: #3a7c5b;
+      color: white;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.2s;
+      font-weight: bold;
+    }
+    .main-btn:hover {
+      background-color: #2e5e44;
+    }
+    .main-btn.active {
+      background-color: #1976d2; /* 藍色 */
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>地方在地知識學</h1>
+    <ul>
+      <li><a href="#culture">社區人物與夥伴</a></li>
+      <li><a href="#wisdom">經驗分享與觀點</a></li>
+      <li><a href="#language">走讀新竹</a></li>
+      <li><a href="#nature">地方創生</a></li>
+      <li><a href="#community">在地生態</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>地方在地知識學</h2>
+    <p>Local Knowledge Studies</p>
+  </header>
+
+  <section class="section-container">
+    <div class="card" id="culture">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="card" id="wisdom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="card" id="language">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="card" id="nature">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="card" id="community">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+      <a href="#">了解更多</a>
+    </div>
+    <div class="main-button-group">
+      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
+      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
+      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
+    </div>
+  </section>
+
+  <!-- 人物專訪區域 -->
+  <div class="content-area" id="person-content">
+    <h3>人物專訪</h3>
+    <p>這裡是人物專訪的內容區域，可以放置相關的專訪文章、人物介紹等內容。</p>
+    <div class="content-placeholder">
+      <p>人物專訪內容預留區域</p>
+    </div>
+  </div>
+
+  <!-- 社區夥伴區域 -->
+  <div class="content-area" id="partner-content">
+    <h3>社區夥伴</h3>
+    <p>這裡是社區夥伴的內容區域，可以放置合作夥伴、社區組織等相關資訊。</p>
+    <div class="content-placeholder">
+      <p>社區夥伴內容預留區域</p>
+    </div>
+  </div>
+
+  <!-- 人才師資庫區域 -->
+  <div class="content-area" id="talent-content">
+    <h3>人才師資庫</h3>
+    <p>這裡是人才師資庫的內容區域，可以放置師資介紹、專業人才等相關資訊。</p>
+    <div class="content-placeholder">
+      <p>人才師資庫內容預留區域</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 地方在地知識學 計畫團隊
+  </footer>
+
+  <script>
+    // 取得所有主按鈕
+    const mainBtns = document.querySelectorAll('.main-btn');
+    mainBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mainBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
