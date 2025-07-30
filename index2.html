@@ -144,6 +144,39 @@
       background-color: #1976d2; /* 藍色 */
       color: #fff;
     }
+    .content-area {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .content-area.active {
+      display: block;
+    }
+    .content-area h4 {
+      color: #3a7c5b;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .content-area ul {
+      list-style: none;
+      padding: 0;
+    }
+    .content-area ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+    }
+    .content-area ul li:last-child {
+      border-bottom: none;
+    }
   </style>
 </head>
 <body>
@@ -231,13 +264,92 @@
   <script>
     // 取得所有主按鈕
     const mainBtns = document.querySelectorAll('.main-btn');
+
+    // 定義不同按鈕的內容
+    const contentData = {
+      'btn-person': {
+        title: '人物專訪',
+        content: `
+          <div class="person-interview">
+            <h4>在地人物故事</h4>
+            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
+            <ul>
+              <li>社區領袖專訪</li>
+              <li>在地藝術家介紹</li>
+              <li>文化傳承者故事</li>
+            </ul>
+          </div>
+        `
+      },
+      'btn-partner': {
+        title: '社區夥伴',
+        content: `
+          <div class="community-partners">
+            <h4>合作夥伴網絡</h4>
+            <p>與我們一起推動地方發展的重要夥伴。</p>
+            <ul>
+              <li>在地組織合作</li>
+              <li>企業夥伴關係</li>
+              <li>政府部門協作</li>
+            </ul>
+          </div>
+        `
+      },
+      'btn-talent': {
+        title: '人才師資庫',
+        content: `
+          <div class="talent-pool">
+            <h4>專業師資陣容</h4>
+            <p>匯集各領域專業人才，提供優質的學習資源。</p>
+            <ul>
+              <li>學術研究專家</li>
+              <li>實務經驗導師</li>
+              <li>在地文化專家</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    // 創建內容顯示區域
+    let contentDisplay = document.getElementById('content-display');
+    if (!contentDisplay) {
+      contentDisplay = document.createElement('div');
+      contentDisplay.id = 'content-display';
+      contentDisplay.className = 'content-area';
+      // 插入到按鈕組下方，footer 上方
+      const footer = document.querySelector('footer');
+      footer.parentNode.insertBefore(contentDisplay, footer);
+    }
+
     mainBtns.forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         mainBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
+
+        // 產生對應的內容
+        const btnId = this.id;
+        if (contentData[btnId]) {
+          contentDisplay.innerHTML = `
+            <h3>${contentData[btnId].title}</h3>
+            <div class="content-placeholder">
+              ${contentData[btnId].content}
+            </div>
+          `;
+          contentDisplay.classList.add('active');
+        }
       });
     });
+
+    // 頁面載入時預設顯示人物專訪內容
+    contentDisplay.innerHTML = `
+      <h3>${contentData['btn-person'].title}</h3>
+      <div class="content-placeholder">
+        ${contentData['btn-person'].content}
+      </div>
+    `;
+    contentDisplay.classList.add('active');
   </script>
 </body>
 </html>
