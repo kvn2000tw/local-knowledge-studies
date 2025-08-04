@@ -226,14 +226,14 @@
       <li><a href="#culture">社區人物與夥伴</a></li>
       <li><a href="experience-sharing.html">經驗分享與觀點</a></li>
       <li><a href="walking-tour.html">走讀新竹</a></li>
-      <li><a href="#nature">地方創生</a></li>
-      <li><a href="#community">在地生態</a></li>
+      <li><a href="local-revitalization.html">地方創生</a></li>
+      <li><a href="local-ecology.html">在地生態</a></li>
     </ul>
   </nav>
 
   <header>
-    <h2>走讀新竹</h2>
-    <p>Walking Tour of Hsinchu</p>
+    <h2>在地生態</h2>
+    <p>Local Ecology</p>
   </header>
 
   <section class="section-container">
@@ -258,16 +258,15 @@
       <p>濕地保育、溪流河域。</p>
     </div>
     <div class="main-button-group">
-      <a href="#" class="main-btn active" id="btn-mountain">山林系列</a>
-      <a href="#" class="main-btn" id="btn-water">水資源系列</a>
-      <a href="#" class="main-btn" id="btn-culture">文化系列</a>
+      <a href="#" class="main-btn active" id="btn-wetland">濕地保育</a>
+      <a href="#" class="main-btn" id="btn-river">溪流河域</a>
+      <a href="#" class="main-btn" id="btn-education">生態教育</a>
     </div>
   </section>
 
-  <!-- 內容顯示區域 -->
-  <div class="content-area" id="content-display">
-    <!-- 內容將由 JavaScript 填充 -->
-  </div>
+  <footer>
+    © 2025 地方在地知識學 計畫團隊
+  </footer>
 
   <script>
     // 取得所有主按鈕
@@ -280,23 +279,18 @@
         const cardId = this.id;
         switch(cardId) {
           case 'culture':
-          case 'culture-bottom':
             window.location.href = 'community-people.html';
             break;
           case 'wisdom':
-          case 'wisdom-bottom':
             window.location.href = 'experience-sharing.html';
             break;
           case 'language':
-          case 'language-bottom':
             window.location.href = 'walking-tour.html';
             break;
           case 'nature':
-          case 'nature-bottom':
             window.location.href = 'local-revitalization.html';
             break;
           case 'community':
-          case 'community-bottom':
             window.location.href = 'local-ecology.html';
             break;
         }
@@ -305,68 +299,80 @@
 
     // 定義不同按鈕的內容
     const contentData = {
-      'btn-mountain': {
-        title: '山林系列',
+      'btn-wetland': {
+        title: '濕地保育',
         content: `
-          <div class="mountain-series">
-            <h4>新竹山林探索</h4>
-            <p>深入新竹的山林環境，探索自然生態與人文歷史的交會。</p>
+          <div class="wetland-interview">
+            <h4>濕地生態保育</h4>
+            <p>深入了解新竹地區濕地生態的保育工作與環境保護。</p>
             <div class="interview-items">
-              <div class="interview-item">
-                <h5>十八尖山</h5>
-                <p>探索十八尖山的自然生態與歷史文化，了解這座城市綠肺的重要性。</p>
-              </div>
-              <div class="interview-item">
-                <h5>青草湖</h5>
-                <p>走訪青草湖周邊環境，了解水庫建設與地方發展的關係。</p>
-              </div>
               <div class="interview-item">
                 <h5>香山濕地</h5>
                 <p>探索香山濕地的生態環境，了解濕地保育與生物多樣性的重要性。</p>
               </div>
+              <div class="interview-item">
+                <h5>紅樹林保護</h5>
+                <p>了解紅樹林生態系統的保護工作與環境教育推廣。</p>
+              </div>
+              <div class="interview-item">
+                <h5>候鳥棲地</h5>
+                <p>探索濕地作為候鳥棲地的重要功能與保育措施。</p>
+              </div>
             </div>
           </div>
         `
       },
-      'btn-water': {
-        title: '水資源系列',
+      'btn-river': {
+        title: '溪流河域',
         content: `
-          <div class="water-series">
-            <h4>新竹水資源探索</h4>
-            <p>深入了解新竹的水資源分布、利用與保護現況。</p>
+          <div class="river-partners">
+            <h4>溪流河域生態</h4>
+            <p>深入了解新竹地區溪流河域的生態環境與保護工作。</p>
             <div class="partner-items">
               <div class="partner-item">
                 <h5>頭前溪</h5>
-                <p>探索頭前溪流域的自然環境與人文歷史，了解河流與城市的關係。</p>
+                <p>探索頭前溪流域的自然環境與生態保護工作。</p>
               </div>
               <div class="partner-item">
                 <h5>客雅溪</h5>
-                <p>走訪客雅溪的生態環境，了解溪流整治與環境保護的成果。</p>
+                <p>了解客雅溪的生態環境與溪流整治成果。</p>
               </div>
               <div class="partner-item">
-                <h5>水庫系統</h5>
-                <p>了解新竹地區水庫系統的建設歷史與供水功能。</p>
+                <h5>水質監測</h5>
+                <p>了解溪流水質監測與環境保護的相關工作。</p>
               </div>
               <div class="partner-item">
-                <h5>地下水資源</h5>
-                <p>探索新竹地區地下水資源的分布與利用現況。</p>
+                <h5>生態復育</h5>
+                <p>探索溪流河域的生態復育工作與環境教育。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-culture': {
-        title: '文化系列',
+      'btn-education': {
+        title: '生態教育',
         content: `
-          <div class="culture-series">
-            <h4>新竹文化探索</h4>
-            <p>深入了解新竹的歷史文化、傳統技藝與現代發展。</p>
-            <ul>
-              <li>古城文化探索</li>
-              <li>客家文化傳承</li>
-              <li>科技產業發展</li>
-              <li>傳統工藝保存</li>
-            </ul>
+          <div class="education-partners">
+            <h4>生態環境教育</h4>
+            <p>推廣生態環境教育，培養大眾的環境保護意識。</p>
+            <div class="partner-items">
+              <div class="partner-item">
+                <h5>環境教育課程</h5>
+                <p>設計適合各年齡層的環境教育課程，提升環境保護意識。</p>
+              </div>
+              <div class="partner-item">
+                <h5>戶外教學活動</h5>
+                <p>舉辦戶外生態教學活動，讓參與者親身體驗自然環境。</p>
+              </div>
+              <div class="partner-item">
+                <h5>社區推廣</h5>
+                <p>在社區中推廣生態環境教育，建立永續發展觀念。</p>
+              </div>
+              <div class="partner-item">
+                <h5>志工培訓</h5>
+                <p>培訓生態環境教育志工，擴大環境保護影響力。</p>
+              </div>
+            </div>
           </div>
         `
       }
@@ -381,6 +387,42 @@
       // 插入到按鈕組下方，footer 上方
       const footer = document.querySelector('footer');
       footer.parentNode.insertBefore(contentDisplay, footer);
+    }
+
+    // 創建底部卡片區域
+    let bottomCardsSection = document.getElementById('bottom-cards-section');
+    if (!bottomCardsSection) {
+      bottomCardsSection = document.createElement('section');
+      bottomCardsSection.id = 'bottom-cards-section';
+      bottomCardsSection.className = 'section-container';
+      bottomCardsSection.style.marginTop = '40px';
+      bottomCardsSection.style.paddingBottom = '40px';
+      
+      bottomCardsSection.innerHTML = `
+        <div class="card" id="culture-bottom">
+          <h3>社區人物與夥伴</h3>
+          <p>人物專訪、社區夥伴、人才師資庫。</p>
+        </div>
+        <div class="card" id="wisdom-bottom">
+          <h3>經驗分享與觀點</h3>
+          <p>教師分享、活動分享、學員分享。</p>
+        </div>
+        <div class="card" id="language-bottom">
+          <h3>走讀新竹</h3>
+          <p>山林系列、水資源系列。</p>
+        </div>
+        <div class="card" id="nature-bottom">
+          <h3>地方創生</h3>
+          <p>優良店家採訪</p>
+        </div>
+        <div class="card" id="community-bottom">
+          <h3>在地生態</h3>
+          <p>濕地保育、溪流河域。</p>
+        </div>
+      `;
+      
+      // 插入到 content-display 之後，footer 之前
+      contentDisplay.parentNode.insertBefore(bottomCardsSection, contentDisplay.nextSibling);
     }
 
     mainBtns.forEach(btn => {
@@ -403,42 +445,14 @@
       });
     });
 
-    // 頁面載入時預設顯示山林系列內容
+    // 頁面載入時預設顯示濕地保育內容
     contentDisplay.innerHTML = `
-      <h3>${contentData['btn-mountain'].title}</h3>
+      <h3>${contentData['btn-wetland'].title}</h3>
       <div class="content-placeholder">
-        ${contentData['btn-mountain'].content}
+        ${contentData['btn-wetland'].content}
       </div>
     `;
     contentDisplay.classList.add('active');
   </script>
-
-  <!-- 底部卡片區域 -->
-  <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
-    <div class="card" id="culture-bottom">
-      <h3>社區人物與夥伴</h3>
-      <p>人物專訪、社區夥伴、人才師資庫。</p>
-    </div>
-    <div class="card" id="wisdom-bottom">
-      <h3>經驗分享與觀點</h3>
-      <p>教師分享、活動分享、學員分享。</p>
-    </div>
-    <div class="card" id="language-bottom">
-      <h3>走讀新竹</h3>
-      <p>山林系列、水資源系列。</p>
-    </div>
-    <div class="card" id="nature-bottom">
-      <h3>地方創生</h3>
-      <p>優良店家採訪</p>
-    </div>
-    <div class="card" id="community-bottom">
-      <h3>在地生態</h3>
-      <p>濕地保育、溪流河域。</p>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 地方在地知識學 計畫團隊
-  </footer>
 </body>
 </html> 

@@ -28,27 +28,22 @@
     <div class="card" id="culture">
       <h3>社區人物與夥伴</h3>
       <p>人物專訪、社區夥伴、人才師資庫。</p>
-      <a href="community-people.html">了解更多</a>
     </div>
     <div class="card" id="wisdom">
       <h3>經驗分享與觀點</h3>
       <p>教師分享、活動分享、學員分享。</p>
-      <a href="experience-sharing.html">了解更多</a>
     </div>
     <div class="card" id="language">
       <h3>走讀新竹</h3>
       <p>山林系列、水資源系列。</p>
-      <a href="walking-tour.html">了解更多</a>
     </div>
     <div class="card" id="nature">
       <h3>地方創生</h3>
       <p>優良店家採訪</p>
-      <a href="#">了解更多</a>
     </div>
     <div class="card" id="community">
       <h3>在地生態</h3>
       <p>濕地保育、溪流河域。</p>
-      <a href="#">了解更多</a>
     </div>
     <div class="main-button-group">
       <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
@@ -57,13 +52,46 @@
     </div>
   </section>
 
-  <footer>
-    © 2025 地方在地知識學 計畫團隊
-  </footer>
+  <!-- 內容顯示區域 -->
+  <div class="content-area" id="content-display">
+    <!-- 內容將由 JavaScript 填充 -->
+  </div>
 
-  <script src="js/common.js"></script>
   <script>
-    // 社區人物頁面的內容數據
+    // 取得所有主按鈕
+    const mainBtns = document.querySelectorAll('.main-btn');
+ 
+    // 處理卡片點擊
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        const cardId = this.id;
+        switch(cardId) {
+          case 'culture':
+          case 'culture-bottom':
+            window.location.href = 'community-people.html';
+            break;
+          case 'wisdom':
+          case 'wisdom-bottom':
+            window.location.href = 'experience-sharing.html';
+            break;
+          case 'language':
+          case 'language-bottom':
+            window.location.href = 'walking-tour.html';
+            break;
+          case 'nature':
+          case 'nature-bottom':
+            window.location.href = 'local-revitalization.html';
+            break;
+          case 'community':
+          case 'community-bottom':
+            window.location.href = 'local-ecology.html';
+            break;
+        }
+      });
+    });
+ 
+    // 定義不同按鈕的內容
     const contentData = {
       'btn-person': {
         title: '人物專訪',
@@ -130,9 +158,75 @@
         `
       }
     };
-
-    // 初始化內容管理器
-    new ContentManager(contentData, 'btn-person');
+ 
+    // 創建內容顯示區域
+    let contentDisplay = document.getElementById('content-display');
+    if (!contentDisplay) {
+      contentDisplay = document.createElement('div');
+      contentDisplay.id = 'content-display';
+      contentDisplay.className = 'content-area';
+      // 插入到按鈕組下方，footer 上方
+      const footer = document.querySelector('footer');
+      footer.parentNode.insertBefore(contentDisplay, footer);
+    }
+ 
+    mainBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mainBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+ 
+        // 產生對應的內容
+        const btnId = this.id;
+        if (contentData[btnId]) {
+          contentDisplay.innerHTML = `
+            <h3>${contentData[btnId].title}</h3>
+            <div class="content-placeholder">
+              ${contentData[btnId].content}
+            </div>
+          `;
+          contentDisplay.classList.add('active');
+        }
+      });
+    });
+ 
+    // 頁面載入時預設顯示人物專訪內容
+    contentDisplay.innerHTML = `
+      <h3>${contentData['btn-person'].title}</h3>
+      <div class="content-placeholder">
+        ${contentData['btn-person'].content}
+      </div>
+    `;
+    contentDisplay.classList.add('active');
   </script>
+
+  <!-- 底部卡片區域 -->
+  <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
+    <div class="card" id="culture-bottom">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+    </div>
+    <div class="card" id="wisdom-bottom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language-bottom">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature-bottom">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community-bottom">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 地方在地知識學 計畫團隊
+  </footer>
+
 </body>
 </html>

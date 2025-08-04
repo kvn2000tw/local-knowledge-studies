@@ -78,9 +78,11 @@
       padding: 15px;
       text-align: center;
       transition: transform 0.2s ease;
+      cursor: pointer;
     }
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     .card h3 {
       color: #3a7c5b;
@@ -92,14 +94,6 @@
       line-height: 1.4;
     }
     .card a {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 6px 12px;
-      background-color: #3a7c5b;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
     }
 
     footer {
@@ -232,8 +226,8 @@
       <li><a href="#culture">社區人物與夥伴</a></li>
       <li><a href="experience-sharing.html">經驗分享與觀點</a></li>
       <li><a href="walking-tour.html">走讀新竹</a></li>
-      <li><a href="#nature">地方創生</a></li>
-      <li><a href="#community">在地生態</a></li>
+      <li><a href="local-revitalization.html">地方創生</a></li>
+      <li><a href="local-ecology.html">在地生態</a></li>
     </ul>
   </nav>
 
@@ -246,27 +240,22 @@
     <div class="card" id="culture">
       <h3>社區人物與夥伴</h3>
       <p>人物專訪、社區夥伴、人才師資庫。</p>
-      <a href="#">了解更多</a>
     </div>
     <div class="card" id="wisdom">
       <h3>經驗分享與觀點</h3>
       <p>教師分享、活動分享、學員分享。</p>
-      <a href="experience-sharing.html">了解更多</a>
     </div>
     <div class="card" id="language">
       <h3>走讀新竹</h3>
       <p>山林系列、水資源系列。</p>
-      <a href="walking-tour.html">了解更多</a>
     </div>
     <div class="card" id="nature">
       <h3>地方創生</h3>
       <p>優良店家採訪</p>
-      <a href="#">了解更多</a>
     </div>
     <div class="card" id="community">
       <h3>在地生態</h3>
       <p>濕地保育、溪流河域。</p>
-      <a href="#">了解更多</a>
     </div>
     <div class="main-button-group">
       <a href="#" class="main-btn active" id="btn-teacher">教師分享</a>
@@ -280,6 +269,30 @@
     <!-- 內容將由 JavaScript 填充 -->
   </div>
 
+  <!-- 底部卡片區域 -->
+  <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
+    <div class="card" id="culture-bottom">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+    </div>
+    <div class="card" id="wisdom-bottom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language-bottom">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature-bottom">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community-bottom">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+  </section>
+
   <footer>
     © 2025 地方在地知識學 計畫團隊
   </footer>
@@ -287,6 +300,36 @@
   <script>
     // 取得所有主按鈕
     const mainBtns = document.querySelectorAll('.main-btn');
+
+    // 處理卡片點擊
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        const cardId = this.id;
+        switch(cardId) {
+          case 'culture':
+          case 'culture-bottom':
+            window.location.href = 'community-people.html';
+            break;
+          case 'wisdom':
+          case 'wisdom-bottom':
+            window.location.href = 'experience-sharing.html';
+            break;
+          case 'language':
+          case 'language-bottom':
+            window.location.href = 'walking-tour.html';
+            break;
+          case 'nature':
+          case 'nature-bottom':
+            window.location.href = 'local-revitalization.html';
+            break;
+          case 'community':
+          case 'community-bottom':
+            window.location.href = 'local-ecology.html';
+            break;
+        }
+      });
+    });
 
     // 定義不同按鈕的內容
     const contentData = {
