@@ -130,17 +130,8 @@
       <h3>在地生態</h3>
       <p>濕地保育、溪流河域。</p>
     </div>
-    <div class="main-button-group">
-      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
-      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
-      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
-    </div>
   </section>
 
-  <!-- 內容顯示區域 -->
-  <div class="content-area" id="content-display">
-    <!-- 內容將由 JavaScript 填充 -->
-  </div>
 
   <script>
     const path = '../';
@@ -152,9 +143,6 @@
       'local-revitalization': path+'local-revitalization.html',
       'local-ecology': path+'local-ecology.html'
     };
-
-    // 取得所有主按鈕
-    const mainBtns = document.querySelectorAll('.main-btn');
 
     // 處理導覽列連結
     const navItems = document.querySelectorAll('nav a[data-nav]');
@@ -198,213 +186,65 @@
       });
     });
  
-    // 定義不同按鈕的內容
-    const contentData = {
-      'btn-person': {
-        title: '人物專訪',
-        content: `
-          <div class="person-interview">
-            <h4>在地人物故事</h4>
-            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
-            <div class="interview-cards">
-              <div class="interview-card" onclick="window.open('人物專訪/冷水坑溪.html', '_blank')">
-                <div class="card-image">
-                  <img src="img/清咸豐九年淡新檔案金山面一代埔地圖說.png" alt="冷水坑溪">
-                </div>
-                <div class="card-content">
-                  <h5>冷水坑溪</h5>
-                  <p>探索冷水坑溪流域的在地人物故事，了解他們與水資源的深厚連結。</p>
-                  <div class="card-tags">
-                    <span class="tag">水資源</span>
-                    <span class="tag">在地故事</span>
-                  </div>
-                </div>
-              </div>
-              <div class="interview-card" onclick="window.open('https://example.com/cold-water-creek', '_blank')">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=眷村採訪" alt="眷村採訪">
-                </div>
-                <div class="card-content">
-                  <h5>眷村採訪</h5>
-                  <p>深入眷村文化，採訪在地居民，記錄珍貴的歷史記憶與生活故事。</p>
-                  <div class="card-tags">
-                    <span class="tag">文化傳承</span>
-                    <span class="tag">歷史記憶</span>
-                  </div>
-                </div>
-              </div>
-              <div class="interview-card" onclick="window.open('https://example.com/cold-water-creek', '_blank')">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=南港採訪" alt="南港採訪">
-                </div>
-                <div class="card-content">
-                  <h5>南港採訪</h5>
-                  <p>走訪南港地區，採訪在地人物，了解南港的發展歷程與文化特色。</p>
-                  <div class="card-tags">
-                    <span class="tag">地方發展</span>
-                    <span class="tag">文化特色</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      'btn-partner': {
-        title: '社區夥伴',
-        content: `
-          <div class="community-partners">
-            <h4>合作夥伴網絡</h4>
-            <p>與我們一起推動地方發展的重要夥伴。</p>
-            <div class="partner-cards">
-              <div class="partner-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=社區名稱" alt="社區名稱">
-                </div>
-                <div class="card-content">
-                  <h5>社區名稱</h5>
-                  <p>與在地社區建立緊密合作關係，共同推動地方發展與文化傳承。</p>
-                  <div class="card-tags">
-                    <span class="tag">地方發展</span>
-                    <span class="tag">文化傳承</span>
-                  </div>
-                </div>
-              </div>
-              <div class="partner-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=公益團體" alt="公益團體">
-                </div>
-                <div class="card-content">
-                  <h5>公益團體</h5>
-                  <p>與各類公益團體合作，攜手推動社會公益與環境保護工作。</p>
-                  <div class="card-tags">
-                    <span class="tag">社會公益</span>
-                    <span class="tag">環境保護</span>
-                  </div>
-                </div>
-              </div>
-              <div class="partner-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=非營利組織" alt="非營利組織">
-                </div>
-                <div class="card-content">
-                  <h5>非營利組織</h5>
-                  <p>與非營利組織建立夥伴關係，共同致力於社會服務與文化推廣。</p>
-                  <div class="card-tags">
-                    <span class="tag">社會服務</span>
-                    <span class="tag">文化推廣</span>
-                  </div>
-                </div>
-              </div>
-              <div class="partner-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=個人" alt="個人">
-                </div>
-                <div class="card-content">
-                  <h5>個人</h5>
-                  <p>與在地個人夥伴合作，匯集個人專長與熱情，共同推動地方發展。</p>
-                  <div class="card-tags">
-                    <span class="tag">個人專長</span>
-                    <span class="tag">地方發展</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      'btn-talent': {
-        title: '人才師資庫',
-        content: `
-          <div class="talent-pool">
-            <h4>專業師資陣容</h4>
-            <p>匯集各領域專業人才，提供優質的學習資源。</p>
-            <div class="talent-cards">
-              <div class="talent-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=學術研究專家" alt="學術研究專家">
-                </div>
-                <div class="card-content">
-                  <h5>學術研究專家</h5>
-                  <p>具備深厚學術背景的研究專家，提供理論基礎與研究方法指導。</p>
-                  <div class="card-tags">
-                    <span class="tag">學術研究</span>
-                    <span class="tag">理論基礎</span>
-                  </div>
-                </div>
-              </div>
-              <div class="talent-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=實務經驗導師" alt="實務經驗導師">
-                </div>
-                <div class="card-content">
-                  <h5>實務經驗導師</h5>
-                  <p>擁有豐富實務經驗的導師，分享實際操作技巧與實戰經驗。</p>
-                  <div class="card-tags">
-                    <span class="tag">實務經驗</span>
-                    <span class="tag">操作技巧</span>
-                  </div>
-                </div>
-              </div>
-              <div class="talent-card">
-                <div class="card-image">
-                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=在地文化專家" alt="在地文化專家">
-                </div>
-                <div class="card-content">
-                  <h5>在地文化專家</h5>
-                  <p>深入了解在地文化的專家，傳承地方文化精髓與歷史脈絡。</p>
-                  <div class="card-tags">
-                    <span class="tag">在地文化</span>
-                    <span class="tag">文化傳承</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      }
-    };
- 
-    // 創建內容顯示區域
-    let contentDisplay = document.getElementById('content-display');
-    if (!contentDisplay) {
-      contentDisplay = document.createElement('div');
-      contentDisplay.id = 'content-display';
-      contentDisplay.className = 'content-area';
-      // 插入到按鈕組下方，footer 上方
-      const footer = document.querySelector('footer');
-      footer.parentNode.insertBefore(contentDisplay, footer);
-    }
- 
-    mainBtns.forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        mainBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
- 
-        // 產生對應的內容
-        const btnId = this.id;
-        if (contentData[btnId]) {
-          contentDisplay.innerHTML = `
-            <h3>${contentData[btnId].title}</h3>
-            <div class="content-placeholder">
-              ${contentData[btnId].content}
-            </div>
-          `;
-          contentDisplay.classList.add('active');
-        }
-      });
-    });
- 
-    // 頁面載入時預設顯示人物專訪內容
-    contentDisplay.innerHTML = `
-      <h3>${contentData['btn-person'].title}</h3>
-      <div class="content-placeholder">
-        ${contentData['btn-person'].content}
-      </div>
-    `;
-    contentDisplay.classList.add('active');
   </script>
+
+  <div class="feature-block" style="max-width:700px;margin:40px auto 0 auto;text-align:center;">
+    <div style="display:flex;gap:4%;justify-content:center;margin-bottom:20px;">
+      <img src="../img/採訪劉瓊林.jpg" alt="冷水坑溪風景1" style="width:48%;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+      <img src="../img/採訪黎正興.jpg" alt="冷水坑溪風景2" style="width:48%;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+    </div>
+    <h2>冷水坑溪現在與未來~羅瑞福採訪實記</h2>
+    <p style="color:#555;font-size:16px;line-height:1.8;">
+      前言<br><br>
+      河（溪）流，是人類文明的開始。因為河流經過的地方，除了飲用，洗滌外，
+      還可用於農田灌溉，圈養畜牧用，而有了部落的聚集，產生了社會，有了文明，
+      所以探索河流的歷史就是文明的歷史。在園區附近有一條溪，有一段美好的榮景。存在耆老的記憶裡，現在的新住民已經沒有印象了。那就是冷水坑溪。
+      科學城社大秉持發掘在地特色，發揚在地文化，分別訪問了資深住民和新住民，
+      希望能保留這段歷史，留給後代子孫曾經在老一輩心中的回憶。<br><br>
+      110年8月6日下午。我們訪問了兩位住民，一位是在冷水坑溪土生土長的在地居民。耆老的名字叫黎正興先生。
+      是園區第一期的安遷戶。一位是因為園區徵收才來這裡，雖然沒有經歷冷水坑溪的那段美好時代，主要是從整理文史的工作，
+      得到冷水坑溪以前的知識。他是現任科園里社區發展協會理事長劉瓊林理事長。<br><br>
+      描逑冷水坑溪以前的情況?<br><br>
+      經由黎正興先生的描述，我們可以想像當時的冷水坑溪在他們的心中是一條怎麼樣的情景。
+      黎正興先生說：「 以前就是附近的人在那邊洗衣服用的，那直接自然湧泉。通常一般附近的居民都在這邊洗的。被徵收才沒洗。我從小學三年級，小學三年級一直洗洗到那個民國70幾年徵收。那時候那水很冷很涼快。中午會有人去那裡泡澡。很多同學泡過澡。我家是不准人家去玩水危險。                    當天訪問黎正興先生
+      那個水非常水質很好，裡面很多有魚很多這個原生種魚，
+      鯰魚啦、鯉魚什麼魚都有。」<br><br>
+      黎正興先生還說了一些當時的情況。
+      從科園里社區發展協會往加油的方向
+      左邊是田，
+      右邊都是墳墓。
+      一般家裡只要家裡的水往下挖三丈就有泉水了，非常乾淨。
+      可見當時對這條溪的依賴。這一切到徵收就完全變了<br><br>
+      當時的情景從發展協會到加油站（左邊是田，右邊是墳墓）<br><br>
+      科園里社區發展協會理事長說他當時來園區就是因為徵收的緣故，那時有遇到一些抗爭。
+      據他的調查，冷水坑溪的源頭在寶山大崎村，中游是在靜心湖，下游到新莊排到頭前溪
+      劉理事長說：「人工湖啊靜心湖有兩個水源，上面的水源是科學園區開發之後呢，是科學園區用來做為雨水這個嗯，儲存等於是也是一個泄洪時的意思啦。
+      泄洪時也是雨水儲存放的地方，                                  當天訪問劉瓊林理事長
+      可以提供這個科學園區呢，來做園藝用啊，
+      做消防用啊。」<br><br>
+      劉理事長繼續說：「這個冷水坑溪是一個很重要的補水道。以前這邊都拿來做，這個農田水利灌溉。灌溉那你剛剛有講說，所以我問你啊，那個人工湖，那個靜心湖是後面開發科學園區這個才建設開發的，那地方本來是一個像沼澤地。
+      那冷水坑溪呢，經過這邊呢就變成有一點像是溼地這樣，然後以前那個冷水坑溪。橫的呢，還有一個往上沖沖到園區，那個行政管理大樓那一帶呀，那一帶以前也是一個湖叫做出栗湖。」<br><br>
+      很可惜在清末時慢慢乾化掉，乾河掉，所以後來沒有了。<br><br>
+      有聽過一些關於冷水坑的傳說嗎？<br><br>
+      黎正興先生說了一個以前聽說的靈異傳說。<br><br>
+      黎正興先生說：「有一個靶場，
+      就是有那個什麼叫做。就是阿兵哥
+      在這服役的時 候被老兵就是怎麼樣以後，就有靈異傳說。
+      有人看到這個就傍晚以後那個靈異就是躺在田野上那個駭駭的聲音。以前還有道班就是金山寺旁邊 老芋頭那個道班有沒有，他就去問說你怎麼樣，他說看不清楚臉，他回去拿東西，回來那個人不見了。」
+      左邊是靜心湖(以前的靶場)，右邊是金山寺<br><br>
+      耆老說那個靶場在金山寺對面也就是現在的靜心湖。
+      這個靶場平常有打靶時候會管制，一直到徵收後才沒有。<br><br>
+      對冷水坑溪的未來有什麼想法?<br><br>
+      不管是資深住民還是新住民，都希望這邊能夠回復到以前的樣貌，不僅可以回到以前小時候的記憶，更可以因此成為新竹新的觀光景點，<br><br>
+      劉理事長提的比較具體，希望可以把水源重新打開，沿途不要用水泥封起來，這樣就可以保留冷水坑溪的原始風貌。<br><br>
+      在google 地圖上看到的是冷水坑排水溝<br><br>
+      黎正興先生是說以前在徵收的時候那時民智未開，大家都不知道政府會做什麼。如果當時政府能夠整合各方的意見，
+      或許冷水坑溪不會像現在是一條臭水溝<br><br>
+      我覺得台灣因為有了園區讓我們的競爭力在世界之上，但很可惜當時沒有注重環保，在老一輩的在地文化
+      已經消失了。現在或未來還有新的國土開發案，應該要兼顧本土文化的保存，讓它不再是一段前人美好的記憶，
+      對這塊土地才能永續發展下去，能夠留給後代一個自然的生態環境。
+    </p>
+  </div>
 
   <!-- 底部卡片區域 -->
   <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
