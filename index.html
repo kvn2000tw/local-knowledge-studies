@@ -2,229 +2,418 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bootstrap 服務項目整合範例</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>地方在地知識學 - 社區人物與夥伴</title>
+  <link rel="stylesheet" href="styles/common.css">
+  <style>
+    .interview-cards,
+    .partner-cards,
+    .talent-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .interview-card,
+    .partner-card,
+    .talent-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .interview-card:hover,
+    .partner-card:hover,
+    .talent-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .interview-card:hover .card-image img,
+    .partner-card:hover .card-image img,
+    .talent-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+    
+    .card-content {
+      padding: 20px;
+    }
+    
+    .card-content h5 {
+      color: #3a7c5b;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      font-weight: bold;
+    }
+    
+    .card-content p {
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 15px 0;
+      font-size: 14px;
+    }
+    
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tag {
+      background-color: #e8f5e8;
+      color: #3a7c5b;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .interview-cards,
+      .partner-cards,
+      .talent-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- 導覽列 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">我的網站</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">首頁</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">服務</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">聯絡我們</a></li>
-      </ul>
+  <nav>
+    <h1>地方在地知識學</h1>
+    <ul>
+      <li><a href="community-people.html">社區人物與夥伴</a></li>
+      <li><a href="experience-sharing.html">經驗分享與觀點</a></li>
+      <li><a href="walking-tour.html">走讀新竹</a></li>
+      <li><a href="#nature">地方創生</a></li>
+      <li><a href="#community">在地生態</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>社區人物與夥伴</h2>
+    <p>Community People & Partners</p>
+  </header>
+
+  <section class="section-container">
+    <div class="card" id="culture">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
     </div>
+    <div class="card" id="wisdom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+    <div class="main-button-group">
+      <a href="#" class="main-btn active" id="btn-person">人物專訪</a>
+      <a href="#" class="main-btn" id="btn-partner">社區夥伴</a>
+      <a href="#" class="main-btn" id="btn-talent">人才師資庫</a>
+    </div>
+  </section>
+
+  <!-- 內容顯示區域 -->
+  <div class="content-area" id="content-display">
+    <!-- 內容將由 JavaScript 填充 -->
   </div>
-</nav>
 
-<!-- 第1區：服務項目卡片 -->
-<div class="bg-white text-dark border-bottom py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">我們的服務</h2>
-    <div id="service-section-1" class="row g-4"></div>
-  </div>
-</div>
-
-<!-- 聯絡我們表單 -->
-<div class="container py-5">
-  <h2 class="mb-4">聯絡我們</h2>
-  <form>
-    <div class="mb-3">
-      <label for="name" class="form-label">姓名</label>
-      <input type="text" class="form-control" id="name" placeholder="請輸入您的姓名">
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">電子信箱</label>
-      <input type="email" class="form-control" id="email" placeholder="請輸入您的Email">
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">留言內容</label>
-      <textarea class="form-control" id="message" rows="4" placeholder="請輸入您的訊息"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">送出</button>
-  </form>
-</div>
-
-<!-- 第二區：再次顯示 -->
-<div class="bg-white text-dark border-top py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">我們的服務（再次顯示）</h2>
-    <div id="service-section-2" class="row g-4"></div>
-  </div>
-</div>
-
-<!-- 回到頂部按鈕 -->
-<a href="#" class="btn btn-outline-dark position-fixed bottom-0 end-0 m-4">⬆️ 回到頂部</a>
-
-<!-- Modal 區塊（5 個） -->
-<div class="modal fade" id="modalBrand" tabindex="-1" aria-labelledby="modalBrandLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalBrandLabel">品牌設計</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-        <p>包含 LOGO、色系、CIS 等品牌形象設計，幫助你在市場上脫穎而出。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalWeb" tabindex="-1" aria-labelledby="modalWebLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalWebLabel">網站開發</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-        <p>從前端設計到後端開發，打造安全穩定的網站系統。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalEcommerce" tabindex="-1" aria-labelledby="modalEcommerceLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalEcommerceLabel">電商整合</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-        <p>整合購物車、金物流，快速上架您的線上商店。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalMarketing" tabindex="-1" aria-labelledby="modalMarketingLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalMarketingLabel">行銷推廣</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-        <p>結合 SEO、社群行銷與廣告曝光，快速提升品牌能見度。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalMaintain" tabindex="-1" aria-labelledby="modalMaintainLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalMaintainLabel">系統維運</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-        <p>我們提供主機部署、日常維護、定期備份，確保服務穩定。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-const services = [
-  {
-    id: "Brand",
-    title: "品牌設計",
-    desc: "建立您的品牌形象，從 LOGO 到視覺風格完整打造。",
-    img: "https://via.placeholder.com/400x200",
-    modalText: "包含 LOGO、色系、CIS 等品牌形象設計，幫助你在市場上脫穎而出。",
-  },
-  {
-    id: "Web",
-    title: "網站開發",
-    desc: "提供響應式網站設計與後台系統整合。",
-    img: "https://via.placeholder.com/400x200",
-    modalText: "從前端設計到後端開發，打造安全穩定的網站系統。",
-  },
-  {
-    id: "Ecommerce",
-    title: "電商整合",
-    desc: "串接購物車、金流與物流，打造完整電商平台。",
-    img: "https://via.placeholder.com/400x200",
-    modalText: "整合購物車、金物流，快速上架您的線上商店。",
-  },
-  {
-    id: "Marketing",
-    title: "行銷推廣",
-    desc: "執行 SEO、社群行銷與廣告投放策略。",
-    img: "https://via.placeholder.com/400x200",
-    modalText: "結合 SEO、社群行銷與廣告曝光，快速提升品牌能見度。",
-  },
-  {
-    id: "Maintain",
-    title: "系統維運",
-    desc: "提供雲端部署、監控與例行維護。",
-    img: "https://via.placeholder.com/400x200",
-    modalText: "我們提供主機部署、日常維護、定期備份，確保服務穩定。",
-  },
-];
-
-// 動態插入卡片
-function renderCards(containerId) {
-  const container = document.getElementById(containerId);
-  services.forEach(service => {
-    container.innerHTML += `
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="${service.img}" class="card-img-top" alt="${service.title}">
-          <div class="card-body">
-            <h5 class="card-title">${service.title}</h5>
-            <p class="card-text">${service.desc}</p>
-            <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal${service.id}">了解更多</a>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-}
-
-// 動態插入 Modal
-function renderModals() {
-  const body = document.body;
-  services.forEach(service => {
-    const modal = document.createElement("div");
-    modal.innerHTML = `
-      <div class="modal fade" id="modal${service.id}" tabindex="-1" aria-labelledby="modal${service.id}Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modal${service.id}Label">${service.title}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
-            </div>
-            <div class="modal-body">
-              <img src="https://via.placeholder.com/800x400" class="img-fluid mb-3">
-              <p>${service.modalText}</p>
+  <script>
+    // 取得所有主按鈕
+    const mainBtns = document.querySelectorAll('.main-btn');
+ 
+    // 處理卡片點擊
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        const cardId = this.id;
+        switch(cardId) {
+          case 'culture':
+          case 'culture-bottom':
+            window.location.href = 'community-people.html';
+            break;
+          case 'wisdom':
+          case 'wisdom-bottom':
+            window.location.href = 'experience-sharing.html';
+            break;
+          case 'language':
+          case 'language-bottom':
+            window.location.href = 'walking-tour.html';
+            break;
+          case 'nature':
+          case 'nature-bottom':
+            window.location.href = 'local-revitalization.html';
+            break;
+          case 'community':
+          case 'community-bottom':
+            window.location.href = 'local-ecology.html';
+            break;
+        }
+      });
+    });
+ 
+    // 定義不同按鈕的內容
+    const contentData = {
+      'btn-person': {
+        title: '人物專訪',
+        content: `
+          <div class="person-interview">
+            <h4>在地人物故事</h4>
+            <p>深入訪談在地重要人物，了解他們的故事與貢獻。</p>
+            <div class="interview-cards">
+              <div class="interview-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=冷水坑溪" alt="冷水坑溪">
+                </div>
+                <div class="card-content">
+                  <h5>冷水坑溪</h5>
+                  <p>探索冷水坑溪流域的在地人物故事，了解他們與水資源的深厚連結。</p>
+                  <div class="card-tags">
+                    <span class="tag">水資源</span>
+                    <span class="tag">在地故事</span>
+                  </div>
+                </div>
+              </div>
+              <div class="interview-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=眷村採訪" alt="眷村採訪">
+                </div>
+                <div class="card-content">
+                  <h5>眷村採訪</h5>
+                  <p>深入眷村文化，採訪在地居民，記錄珍貴的歷史記憶與生活故事。</p>
+                  <div class="card-tags">
+                    <span class="tag">文化傳承</span>
+                    <span class="tag">歷史記憶</span>
+                  </div>
+                </div>
+              </div>
+              <div class="interview-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=南港採訪" alt="南港採訪">
+                </div>
+                <div class="card-content">
+                  <h5>南港採訪</h5>
+                  <p>走訪南港地區，採訪在地人物，了解南港的發展歷程與文化特色。</p>
+                  <div class="card-tags">
+                    <span class="tag">地方發展</span>
+                    <span class="tag">文化特色</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        `
+      },
+      'btn-partner': {
+        title: '社區夥伴',
+        content: `
+          <div class="community-partners">
+            <h4>合作夥伴網絡</h4>
+            <p>與我們一起推動地方發展的重要夥伴。</p>
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=社區名稱" alt="社區名稱">
+                </div>
+                <div class="card-content">
+                  <h5>社區名稱</h5>
+                  <p>與在地社區建立緊密合作關係，共同推動地方發展與文化傳承。</p>
+                  <div class="card-tags">
+                    <span class="tag">地方發展</span>
+                    <span class="tag">文化傳承</span>
+                  </div>
+                </div>
+              </div>
+              <div class="partner-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=公益團體" alt="公益團體">
+                </div>
+                <div class="card-content">
+                  <h5>公益團體</h5>
+                  <p>與各類公益團體合作，攜手推動社會公益與環境保護工作。</p>
+                  <div class="card-tags">
+                    <span class="tag">社會公益</span>
+                    <span class="tag">環境保護</span>
+                  </div>
+                </div>
+              </div>
+              <div class="partner-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=非營利組織" alt="非營利組織">
+                </div>
+                <div class="card-content">
+                  <h5>非營利組織</h5>
+                  <p>與非營利組織建立夥伴關係，共同致力於社會服務與文化推廣。</p>
+                  <div class="card-tags">
+                    <span class="tag">社會服務</span>
+                    <span class="tag">文化推廣</span>
+                  </div>
+                </div>
+              </div>
+              <div class="partner-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=個人" alt="個人">
+                </div>
+                <div class="card-content">
+                  <h5>個人</h5>
+                  <p>與在地個人夥伴合作，匯集個人專長與熱情，共同推動地方發展。</p>
+                  <div class="card-tags">
+                    <span class="tag">個人專長</span>
+                    <span class="tag">地方發展</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'btn-talent': {
+        title: '人才師資庫',
+        content: `
+          <div class="talent-pool">
+            <h4>專業師資陣容</h4>
+            <p>匯集各領域專業人才，提供優質的學習資源。</p>
+            <div class="talent-cards">
+              <div class="talent-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=學術研究專家" alt="學術研究專家">
+                </div>
+                <div class="card-content">
+                  <h5>學術研究專家</h5>
+                  <p>具備深厚學術背景的研究專家，提供理論基礎與研究方法指導。</p>
+                  <div class="card-tags">
+                    <span class="tag">學術研究</span>
+                    <span class="tag">理論基礎</span>
+                  </div>
+                </div>
+              </div>
+              <div class="talent-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=實務經驗導師" alt="實務經驗導師">
+                </div>
+                <div class="card-content">
+                  <h5>實務經驗導師</h5>
+                  <p>擁有豐富實務經驗的導師，分享實際操作技巧與實戰經驗。</p>
+                  <div class="card-tags">
+                    <span class="tag">實務經驗</span>
+                    <span class="tag">操作技巧</span>
+                  </div>
+                </div>
+              </div>
+              <div class="talent-card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/200x150/3a7c5b/ffffff?text=在地文化專家" alt="在地文化專家">
+                </div>
+                <div class="card-content">
+                  <h5>在地文化專家</h5>
+                  <p>深入了解在地文化的專家，傳承地方文化精髓與歷史脈絡。</p>
+                  <div class="card-tags">
+                    <span class="tag">在地文化</span>
+                    <span class="tag">文化傳承</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    };
+ 
+    // 創建內容顯示區域
+    let contentDisplay = document.getElementById('content-display');
+    if (!contentDisplay) {
+      contentDisplay = document.createElement('div');
+      contentDisplay.id = 'content-display';
+      contentDisplay.className = 'content-area';
+      // 插入到按鈕組下方，footer 上方
+      const footer = document.querySelector('footer');
+      footer.parentNode.insertBefore(contentDisplay, footer);
+    }
+ 
+    mainBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mainBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+ 
+        // 產生對應的內容
+        const btnId = this.id;
+        if (contentData[btnId]) {
+          contentDisplay.innerHTML = `
+            <h3>${contentData[btnId].title}</h3>
+            <div class="content-placeholder">
+              ${contentData[btnId].content}
+            </div>
+          `;
+          contentDisplay.classList.add('active');
+        }
+      });
+    });
+ 
+    // 頁面載入時預設顯示人物專訪內容
+    contentDisplay.innerHTML = `
+      <h3>${contentData['btn-person'].title}</h3>
+      <div class="content-placeholder">
+        ${contentData['btn-person'].content}
       </div>
     `;
-    body.appendChild(modal);
-  });
-}
+    contentDisplay.classList.add('active');
+  </script>
 
-// 初始化：渲染卡片和 Modal
-renderCards("service-section-1");
-renderCards("service-section-2");
-renderModals();
-</script>
+  <!-- 底部卡片區域 -->
+  <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
+    <div class="card" id="culture-bottom">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+    </div>
+    <div class="card" id="wisdom-bottom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language-bottom">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature-bottom">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community-bottom">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 新竹市科學城社區大學
+  </footer>
 
 </body>
 </html>
