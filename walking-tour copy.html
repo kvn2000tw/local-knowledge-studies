@@ -216,122 +216,6 @@
       color: #555;
       line-height: 1.5;
     }
-    
-    /* Tab 樣式 */
-    .tab-container {
-      margin-top: 20px;
-    }
-    
-    .tab-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    
-    .tab-btn {
-      background-color: transparent;
-      color: #666;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: color 0.3s ease;
-      text-decoration: underline;
-      text-decoration-color: transparent;
-    }
-    
-    .tab-btn.active {
-      color: #3a7c5b;
-      text-decoration-color: #3a7c5b;
-    }
-    
-    .tab-btn:hover {
-      color: #3a7c5b;
-    }
-    
-    .tab-content {
-      display: none;
-    }
-    
-    .tab-content.active {
-      display: block;
-    }
-    
-    /* 卡片樣式 */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .content-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .content-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .content-card .card-image {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-    }
-    
-    .content-card .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    
-    .content-card:hover .card-image img {
-      transform: scale(1.05);
-    }
-    
-    .content-card .card-content {
-      padding: 20px;
-    }
-    
-    .content-card .card-content h5 {
-      color: #3a7c5b;
-      font-size: 18px;
-      margin: 0 0 10px 0;
-      font-weight: bold;
-    }
-    
-    .content-card .card-content p {
-      color: #555;
-      line-height: 1.6;
-      margin: 0;
-      font-size: 14px;
-    }
-    
-    @media (max-width: 1200px) {
-      .card-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    
-    @media (max-width: 900px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 600px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -374,9 +258,9 @@
       <p>濕地保育、溪流河域。</p>
     </div>
     <div class="main-button-group">
-      <a href="#" class="main-btn active" id="btn-east">東區</a>
-      <a href="#" class="main-btn" id="btn-xiangshan">香山區</a>
-      <a href="#" class="main-btn" id="btn-north">北區</a>
+      <a href="#" class="main-btn active" id="btn-mountain">東區</a>
+      <a href="#" class="main-btn" id="btn-water">香山區</a>
+      <a href="#" class="main-btn" id="btn-culture">北區</a>
     </div>
   </section>
 
@@ -421,137 +305,68 @@
 
     // 定義不同按鈕的內容
     const contentData = {
-      'btn-east': {
-        title: '東區',
+      'btn-mountain': {
+        title: '山林系列',
         content: `
-          <div class="east-district">
-            <div class="tab-container">
-              <div class="tab-buttons">
-                <button class="tab-btn active" data-tab="mountain">山林系列</button>
-                <button class="tab-btn" data-tab="water">水資源系列</button>
-              </div>
-              <div class="tab-content active" id="mountain-tab">
-                <div class="mountain-series">
-                  <div class="card-grid">
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="十八尖山">
-                      </div>
-                      <div class="card-content">
-                        <h5>十八尖山</h5>
-                        <p>探索十八尖山的自然生態與歷史文化，了解這座城市綠肺的重要性。</p>
-                      </div>
-                    </div>
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="青草湖">
-                      </div>
-                      <div class="card-content">
-                        <h5>青草湖</h5>
-                        <p>走訪青草湖周邊環境，了解水庫建設與地方發展的關係。</p>
-                      </div>
-                    </div>
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="科學園區綠地">
-                      </div>
-                      <div class="card-content">
-                        <h5>科學園區綠地</h5>
-                        <p>探索科學園區周邊的綠地環境，了解科技與自然的和諧共存。</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-content" id="water-tab">
-                <div class="water-series">
-                  <div class="card-grid">
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="頭前溪東區段">
-                      </div>
-                      <div class="card-content">
-                        <h5>頭前溪東區段</h5>
-                        <p>探索頭前溪在東區的自然環境與人文歷史，了解河流與城市的關係。</p>
-                      </div>
-                    </div>
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="客雅溪">
-                      </div>
-                      <div class="card-content">
-                        <h5>客雅溪</h5>
-                        <p>走訪客雅溪在東區的生態環境，了解溪流整治與環境保護的成果。</p>
-                      </div>
-                    </div>
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="青草湖水庫">
-                      </div>
-                      <div class="card-content">
-                        <h5>青草湖水庫</h5>
-                        <p>了解青草湖水庫的建設歷史與供水功能。</p>
-                      </div>
-                    </div>
-                    <div class="content-card">
-                      <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="地下水資源">
-                      </div>
-                      <div class="card-content">
-                        <h5>地下水資源</h5>
-                        <p>探索東區地下水資源的分布與利用現況。</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      'btn-xiangshan': {
-        title: '香山區',
-        content: `
-          <div class="xiangshan-district">
-            <h4>香山區走讀探索</h4>
-            <p>深入探索新竹香山區的自然環境與人文特色。</p>
+          <div class="mountain-series">
+            <h4>新竹山林探索</h4>
+            <p>深入新竹的山林環境，探索自然生態與人文歷史的交會。</p>
             <div class="interview-items">
+              <div class="interview-item">
+                <h5>十八尖山</h5>
+                <p>探索十八尖山的自然生態與歷史文化，了解這座城市綠肺的重要性。</p>
+              </div>
+              <div class="interview-item">
+                <h5>青草湖</h5>
+                <p>走訪青草湖周邊環境，了解水庫建設與地方發展的關係。</p>
+              </div>
               <div class="interview-item">
                 <h5>香山濕地</h5>
                 <p>探索香山濕地的生態環境，了解濕地保育與生物多樣性的重要性。</p>
               </div>
-              <div class="interview-item">
-                <h5>香山漁港</h5>
-                <p>走訪香山漁港，了解漁業文化與海洋生態。</p>
+            </div>
+          </div>
+        `
+      },
+      'btn-water': {
+        title: '水資源系列',
+        content: `
+          <div class="water-series">
+            <h4>新竹水資源探索</h4>
+            <p>深入了解新竹的水資源分布、利用與保護現況。</p>
+            <div class="partner-items">
+              <div class="partner-item">
+                <h5>頭前溪</h5>
+                <p>探索頭前溪流域的自然環境與人文歷史，了解河流與城市的關係。</p>
               </div>
-              <div class="interview-item">
-                <h5>香山丘陵</h5>
-                <p>探索香山丘陵的自然生態與地質特色。</p>
+              <div class="partner-item">
+                <h5>客雅溪</h5>
+                <p>走訪客雅溪的生態環境，了解溪流整治與環境保護的成果。</p>
+              </div>
+              <div class="partner-item">
+                <h5>水庫系統</h5>
+                <p>了解新竹地區水庫系統的建設歷史與供水功能。</p>
+              </div>
+              <div class="partner-item">
+                <h5>地下水資源</h5>
+                <p>探索新竹地區地下水資源的分布與利用現況。</p>
               </div>
             </div>
           </div>
         `
       },
-      'btn-north': {
-        title: '北區',
+      'btn-culture': {
+        title: '文化系列',
         content: `
-          <div class="north-district">
-            <h4>北區走讀探索</h4>
-            <p>深入探索新竹北區的歷史文化與現代發展。</p>
-            <div class="partner-items">
-              <div class="partner-item">
-                <h5>古城文化</h5>
-                <p>探索北區的古城文化與歷史遺跡。</p>
-              </div>
-              <div class="partner-item">
-                <h5>客家文化</h5>
-                <p>了解北區的客家文化傳承與特色。</p>
-              </div>
-              <div class="partner-item">
-                <h5>現代發展</h5>
-                <p>探索北區的現代發展與都市更新。</p>
-              </div>
-            </div>
+          <div class="culture-series">
+            <h4>新竹文化探索</h4>
+            <p>深入了解新竹的歷史文化、傳統技藝與現代發展。</p>
+            <ul>
+              <li>古城文化探索</li>
+              <li>客家文化傳承</li>
+              <li>科技產業發展</li>
+              <li>傳統工藝保存</li>
+            </ul>
           </div>
         `
       }
@@ -578,48 +393,24 @@
         const btnId = this.id;
         if (contentData[btnId]) {
           contentDisplay.innerHTML = `
+            <h3>${contentData[btnId].title}</h3>
             <div class="content-placeholder">
               ${contentData[btnId].content}
             </div>
           `;
           contentDisplay.classList.add('active');
-          
-          // 如果是東區，添加 tab 切換功能
-          if (btnId === 'btn-east') {
-            setupTabSwitching();
-          }
         }
       });
     });
 
-    // Tab 切換功能
-    function setupTabSwitching() {
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-      
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const tabName = this.getAttribute('data-tab');
-          
-          // 移除所有 active 類別
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
-          
-          // 添加 active 類別到當前選中的 tab
-          this.classList.add('active');
-          document.getElementById(tabName + '-tab').classList.add('active');
-        });
-      });
-    }
-
-    // 頁面載入時預設顯示東區內容
+    // 頁面載入時預設顯示山林系列內容
     contentDisplay.innerHTML = `
+      <h3>${contentData['btn-mountain'].title}</h3>
       <div class="content-placeholder">
-        ${contentData['btn-east'].content}
+        ${contentData['btn-mountain'].content}
       </div>
     `;
     contentDisplay.classList.add('active');
-    setupTabSwitching();
   </script>
 
   <!-- 底部卡片區域 -->
