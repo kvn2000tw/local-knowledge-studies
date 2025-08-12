@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>地方在地知識學 - 社區人物與夥伴</title>
+  <link rel="stylesheet" href="../styles/common.css">
+  <style>
+    .interview-cards,
+    .partner-cards,
+    .talent-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .interview-card,
+    .partner-card,
+    .talent-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .interview-card:hover,
+    .partner-card:hover,
+    .talent-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .interview-card:hover .card-image img,
+    .partner-card:hover .card-image img,
+    .talent-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+    
+    .card-content {
+      padding: 20px;
+    }
+    
+    .card-content h5 {
+      color: #3a7c5b;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      font-weight: bold;
+    }
+    
+    .card-content p {
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 15px 0;
+      font-size: 14px;
+    }
+    
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tag {
+      background-color: #e8f5e8;
+      color: #3a7c5b;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+
+    
+    @media (max-width: 768px) {
+      .interview-cards,
+      .partner-cards,
+      .talent-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+        .gallery {
+             display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 三欄 */
+            gap: 10px;
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 0 20px; /* 左右各 20px */
+            box-sizing: border-box; /* 讓 padding 不影響 max-width */
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+         
+        box-sizing: border-box; /* 確保不影響排版 */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 20px;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .box {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>地方在地知識學</h1>
+    <ul>
+      <li><a href="#" data-nav="community-people">社區人物與夥伴</a></li>
+      <li><a href="#" data-nav="experience-sharing">經驗分享與觀點</a></li>
+      <li><a href="#" data-nav="walking-tour">走讀新竹</a></li>
+      <li><a href="#" data-nav="local-revitalization">地方創生</a></li>
+      <li><a href="#" data-nav="local-ecology">在地生態</a></li>
+    </ul>
+  </nav>
+
+  <section class="section-container">
+    <div class="card" id="culture">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+    </div>
+    <div class="card" id="wisdom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+  </section>
+
+
+  <script>
+    const path = '../';
+    // 定義導覽列連結
+    const navLinks = {
+      'community-people': path+'index.html',
+      'experience-sharing': path+'experience-sharing.html',
+      'walking-tour': path+'walking-tour.html',
+      'local-revitalization': path+'local-revitalization.html',
+      'local-ecology': path+'local-ecology.html'
+    };
+
+    // 處理導覽列連結
+    const navItems = document.querySelectorAll('nav a[data-nav]');
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const navKey = this.getAttribute('data-nav');
+        if (navLinks[navKey]) {
+          window.location.href = navLinks[navKey];
+        }
+      });
+    });
+ 
+    // 處理卡片點擊
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        const cardId = this.id;
+        switch(cardId) {
+          case 'culture':
+          case 'culture-bottom':
+            window.location.href = path+'index.html';
+            break;
+          case 'wisdom':
+          case 'wisdom-bottom':
+            window.location.href = path+'experience-sharing.html';
+            break;
+          case 'language':
+          case 'language-bottom':
+            window.location.href = path+'walking-tour.html';
+            break;
+          case 'nature':
+          case 'nature-bottom':
+            window.location.href = path+'local-revitalization.html';
+            break;
+          case 'community':
+          case 'community-bottom':
+            window.location.href = path+'local-ecology.html';
+            break;
+        }
+      });
+    });
+ 
+  </script>
+
+
+  <div style=" padding: 0 20px;">
+    <h2>2024/11/03 十八尖山山林系列雅韻篇</h2>
+
+    <div class="container">
+        <!-- 文字容器 -->
+        <div class="box">
+            <h3>夢龍老師分享</h3>
+            <p>經歷那很多場的十八尖山山林教育，這次輪到自己主講十八尖山的歷史。一開始有點緊張，文件夾沒有處理好，還好有袁立老師協助。 在準備歷史的資料中，主要是針對大家平常看到的涼亭、防空洞、公路來介紹。國琴老師解說賽馬場的歷史，這部分因為是早期的歷史， 但經過老師的說明，而且原址又是在高商這裡，感覺有身入其境的想像。步道走的是有很多石觀音的路線，讓伙伴有些沒有看過這麼多石觀音，經過袁立老師看夢龍老師的解說，看到不同的神韻。 有別於大家常走的路，非常不錯的山林教育。最後壓軸宜謹老師帶領大家以樹葉和石頭來做藝術創作，我想十八尖山有很多面向，經由一次次不斸的探訪，更能學到不同的內容，每次都會有不同的期待。 每次參加活動就會對十八尖山更多的解解，</p>
+        </div>
+
+        <!-- 圖片容器 1 -->
+        <div class="box">
+          <img src="../img/2024-11-03/010.jpg" alt="雅韻篇1">
+        </div>
+
+        <!-- 圖片容器 2 -->
+        <div class="box">
+          <img src="../img/2024-11-03/007.jpg" alt="雅韻篇2">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 文字容器 -->
+        <div class="box">
+            <h3>兆祥老師分享</h3>
+            <p>1131103科學城社區大學主辦的十八尖山山林系列雅韻篇合併為公論週的活動頗有特色，這項活動給予大家有機會進一步瞭解十八尖山的相關主題。 接續塗夢龍老師的整體介紹，我從國家重力站開始接棒： 國家重力站是利用原來既有的防空洞加以整修規劃，安置精密儀器用來量測重力場的變化，以因應高精確度重力參數的需求。目前集中在前面五座防空洞內，取其不受干擾的優點而設置。這個構想真的是充分利用既有設施，省去重複投資的浪費。 沿著步道一直往山上行走，兩旁有各式各樣的植栽，除了少數有標示名稱以外，大多都沒有標示，所以告訴學員利用Google lens 智慧鏡頭可以快速地查詢植栽的名稱。它所顯示的可能答案供你自己來判斷選取。一般而言，框入鏡頭範圍內的植物特色愈多愈可能正確，例如，包括葉子，枝條及花朵的判斷一定比只有葉片的更為準確。 非常感謝校長、主任、塗夢龍老師、駱國琴老師、駱正榮老師的分工合作，終能圓滿完成。</p>
+        </div>
+
+        <!-- 圖片容器 1 -->
+        <div class="box">
+          <img src="../img/2024-11-03/001.jpg" alt="雅韻篇1">
+        </div>
+
+        <!-- 圖片容器 2 -->
+        <div class="box">
+          <img src="../img/2024-11-03/002.jpg" alt="雅韻篇2">
+        </div>
+    </div>
+
+    <h3>國琴老師分享</h3>
+    <p>#週四早智慧手機軟體app進階應用</p>
+    <p>1131103科學城社大主辦十八尖山山林系列雅韻篇活動結束後，讓我感到無比充實與愉悅。十八尖山位於新竹市，擁有豐富的自然生態和文化歷史。十八尖山自日治時代1927年(昭和2年)開始便開闢成森林公園，呈新月型，蜿蜒約7、8公里，且環抱新竹市東、南郊，因此天氣好時，遠眺的景色多元豐富；因有18個山頭而得名，最高處在現在的介壽亭，海拔131.79公尺。一座低海拔的山丘，適合日常休閒登山。 這次的導覽行程中，步道上林蔭蔽天、鳥語花香，除了欣賞滿山的花卉植物與鳥兒、松鼠外，分佈於山中的二十四尊石觀音也值得探訪一番。我沿著桂花步道為大家介紹桂花的特色，分享了桂花與中秋節擺盆開運的關聯，以及與之相關的神話故事；特別提到杜鵑花作為新竹市花的象徵意涵。此外，我也解說了相思樹的多樣用途，讓參與者了解到相思樹在台灣曾經是木炭的主要原料。我們認知到位於北台灣的最後一家木炭窯，不僅是歷史的見證，更是文化的延續。並運用了手機智慧鏡頭進行植物辨識，更讓參與者能即時體驗科技在自然觀察中的應用。 這次我主要導覽主題是「石觀音」的歷史背景，我帶領大家了解十八尖山上「新竹西國三十三所靈場」的來歷，這些石觀音是日治時期於1931年設立，採用東密雕法，每尊法相姿態、法器及飾物各具特色，具有珍貴的文化與歷史價值。新竹市綠水社區的義工與新竹高中師生也協力進行尋訪，目前已找到其中的二十四座石觀音。 石觀音是十八尖山的一大特色景點，吸引許多信眾和遊客。在行程中，我特別帶大家參觀十八尖山保存最完整的第三二番的千手石觀音，並準備圖片輔助說明，讓大家更能理解這段歷史。行至幸福亭旁，我們駐足在這山間融入駱正榮老師帶領的養生太極、吟詩詠讚，隨著清新空氣與大自然和諧流動，讓身心得到充分放鬆。這次的雅韻活動，不僅為大家增添了知識與文化認識，也帶來了身心靈的舒展，感覺格外愉悅與充實。 最後，感謝世英校長、以寧主任、塗夢龍老師、駱正榮老師、吳兆祥老師的協辦，讓此次活動圓滿順利！</p>
+    
+    <div class="gallery">
+        <img src="../img/2024-11-03/003.jpg" alt="雅韻篇">
+        <img src="../img/2024-11-03/011.jpg" alt="雅韻篇">
+        <img src="../img/2024-11-03/017.jpg" alt="雅韻篇">
+       
+      
+    </div>
+
+  <h3>正榮老師分享</h3>
+  
+    <p>敬請校長、主任、老師們給予指導，以下記錄城市文旅-博物館的故事「十八尖山 山林教育-山林茶趣」從個人到社區的永續生活實踐。 十八尖山是新竹人的森林公園，聊天散步、健走跑步，三三兩兩 好不熱鬧，各式亭臺充滿跳舞蹈、走拳法、吹樂器歡樂畫面，這是十八尖山日常。 然而市民有舒適的空間環境，卻對公園的歷史背景一知半解，也既熟悉又陌生，在日治時期1924年、1928年所發生什麼故事，相信有關全臺唯一的森林公園-十八尖山，一定很好奇吧！ 新竹市科學城社區大學由李校長世英帶領多元文化與全球視野教師群籌備一年時間，規劃十八尖山～山林教育系列活動，10月23日辦理場次「十八尖山 山林教育-山林茶趣」-夢龍擔任課程主持人，進行三小時的環境與文史導覽解說，並安排茶席展演及讓民眾體驗泡茶程序進行。 當日上午九點，三十位民眾準時報到，由吳主任以寧介紹活動簡介及介紹出席的本校各課程的講師，在致歡迎詞後，夢龍說明全程活動時間與實施地點和注意事項，讓每一位民眾配戴個人式導覽機，隨即進行登山步道導覽。 首先介紹新竹地區曾為道卡斯族的活動領域，竹塹社因狩獵追逐鹿群至十八尖山，清代漢人移墾定居竹塹，先人塚塋陸續安葬於此，1924年日據期間清塚，開闢森林環山路徑建遊覽公園，1928年正式啟用「全島唯一森林公園」，1929年民間募資向日本山口縣德山市訂製花崗岩造，訂製三十三座石觀音，禮請和尚開光祈福。 1945年日本離臺，國軍退防衝擊下，十八尖山成封閉之地。1963年開放後，1977年自由車場修建，民眾隨意擺設神像、搭蓋亭臺樓閣，都造成不同層次環境變遷或毀損。 回顧新竹市十八尖山在二十年前創舉辦理賞花月活動，每逢三月行銷新竹觀光產業，吸引全臺民眾關注花季期間的花卉博覽，現今雖無花團錦簇的場景，2024年也是正視<山林場域>為教育基地，讓民眾以森林浴場運動提升教育目標「山林療癒與木育教育、環境生態保護」。 沿著東峰步道前行，吸引眼球正是原設計花鐘的花台，兩側有裝設鐵門的山洞，十八尖山全區有十六座大小型態不一的防空戰備坑道口，東峰區域有五座。在此處有一個世界級研究機構的精密儀器-國家重力重力基準點站，從重力站觀看地球環境變遷、地震、火山、地下水、氣候等，測量分析並與全球各國資訊傳遞，分享地球科學研究。 繼續走在夾道二側桂花樹間，散發淡淡清香誘來鳳蝶飛舞，相思樹在頂上陽光，經枝葉間灑下光源，秋冬暖暖的舒服了身心，柏油路旁姑婆芋，大又厚的綠葉如傘有層次落差也是漂亮。夢龍再透過臺灣民間故事，簡單引述幾種植物的趣味性與真實性分享。 再前進九芎葛牆旁，看到第一座石觀音編號32號，引導民眾向前觀察，再提*卅二番*-卅字的發音、拼音，讓大家思考出正確答案。 再提從日治時期，新西國三十三觀音靈場，基隆、臺北、宜蘭、新竹等地設置概略緣由，告訴民眾可以尋找目前全臺灣，最多石觀音分佈最密集的十八尖山上，按二十四座番號、位置、法相等，製作石觀音秘笈，會是再到環境場域有學習及解謎的問題突破。 制高點有三座涼亭及奉茶設施的飲水機組，休息一下喝口水，再走到全臺灣最容易親近的小百岳三角點，拍攝一張留作紀念打卡照片上傳分享。三角點講解重點，是臺灣當時在日治時期為製作精細的地圖，運用三角點與點之間的高低、距離，由線連結網面有著精準的立體山體等高線相關地理資訊。 走在陵線上，往左看到唯一一座馬頭觀音法相，莊嚴公義的震撼感十足。另一座千手觀音也是目前山上最多尊的造型。叉路邊上也能再覓得一尊千手觀音法相。 繼續走二個彎道，多條步道再次匯成一個節點，就在人群聚集最熱鬧的觀音亭，夢龍先以圖卡示意，與民眾互動解說「臺灣茶」經發酵的程度，一般簡易區分，不發酵、20%-60%，甚至全發酵，六種茶的茶湯色澤的觀察。 茶席的佈置，擺設茶具，說明司茶及茶侶的關係，燙壺、淨杯、取茶葉、請茶友鑑茶型、泡茶、讀秒、倒茶的順序，邀請一起品茶。 開放體驗司茶流程，是環境教育非常重要的教案設計，真正在「境、淨、靜」身、心、零的五感體驗。 再次感謝本群組的國琴老師、兆祥老師、瑞福老師、雅婷老師、袁立老師，最疼惜夢龍給予支持的校長、主任，一年來經由視訊會議，一次次的討論及研究，梳理環境教育核心主軸，將理論分析編碼，再實境探勘磨合計畫架構，終於產品上架。經多次的教學活動學習，增進自己在教案的能量，呈現最佳十八尖山-山林教育行動教學教育成果。</p>
+    
+    <div class="gallery">
+        <img src="../img/2024-11-03/005.jpg" alt="雅韻篇">
+        <img src="../img/2024-11-03/012.jpg" alt="雅韻篇">
+        <img src="../img/2024-11-03/016.jpg" alt="雅韻篇">
+       
+      
+    </div>
+
+    <h3>活動照片</h3>
+  </div>
+    <div class="gallery">
+        <img src="../img/2024-11-03/006.jpg" alt="雅韻篇1">
+        <img src="../img/2024-11-03/008.jpg" alt="雅韻篇2">
+        <img src="../img/2024-11-03/009.jpg" alt="雅韻篇3">
+        <img src="../img/2024-11-03/013.jpg" alt="雅韻篇4">
+        <img src="../img/2024-11-03/014.jpg" alt="雅韻篇5">
+        <img src="../img/2024-11-03/015.jpg" alt="雅韻篇6">
+      
+    </div>
+
+  <!-- 底部卡片區域 -->
+  <section class="section-container" style="margin-top: 40px; padding-bottom: 40px;">
+    <div class="card" id="culture-bottom">
+      <h3>社區人物與夥伴</h3>
+      <p>人物專訪、社區夥伴、人才師資庫。</p>
+    </div>
+    <div class="card" id="wisdom-bottom">
+      <h3>經驗分享與觀點</h3>
+      <p>教師分享、活動分享、學員分享。</p>
+    </div>
+    <div class="card" id="language-bottom">
+      <h3>走讀新竹</h3>
+      <p>山林系列、水資源系列。</p>
+    </div>
+    <div class="card" id="nature-bottom">
+      <h3>地方創生</h3>
+      <p>優良店家採訪</p>
+    </div>
+    <div class="card" id="community-bottom">
+      <h3>在地生態</h3>
+      <p>濕地保育、溪流河域。</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 新竹市科學城社區大學
+  </footer>
+
+</body>
+</html>
