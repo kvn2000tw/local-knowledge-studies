@@ -280,18 +280,26 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
     
-    .content-card .card-image {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-    }
-    
-    .content-card .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+.content-card .card-image {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 9; /* ✅ 自動維持 16:9，避免圖片變形 */
+}
+
+.content-card .card-image img {
+  width: 100%;
+  height: auto; /* ✅ 高度自動，保持比例 */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* 手機版再細調 */
+@media (max-width: 600px) {
+  .content-card .card-image {
+    aspect-ratio: 4 / 3; /* 手機改成 4:3，更適合直立螢幕 */
+  }
+}
+
     
     .content-card:hover .card-image img {
       transform: scale(1.05);
@@ -349,7 +357,6 @@
 
   <header>
     <h2>走讀新竹</h2>
-    <p>Walking Tour of Hsinchu</p>
   </header>
 
   <section class="section-container">
@@ -492,7 +499,7 @@
                         <img src="img/2024-11-17/004.jpg" alt="十八尖山">
                       </div>
                       <div class="card-content">
-                        <h5>八尖山山林教育系列</h5>
+                        <h5>十八尖山山林教育系列</h5>
                         <p>十八尖山山林系列藝術篇</p>
                       </div>
                     </div>
@@ -505,9 +512,9 @@
                         <p>山林健康有氧篇</p>
                       </div>
                     </div>
-                  <div class="content-card">
+                  <div class="content-card" onclick="window.open('山林系列/2024-12-28.html', '_blank')">
                       <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="十八尖山">
+                        <img src="img/2024-12-28/018.jpg" alt="十八尖山">
                       </div>
                       <div class="card-content">
                         <h5>十八尖山山林教育系列</h5>
